@@ -1,8 +1,10 @@
-// local storage management system
+// use local storage to manage cart data
 
-const fakeDb = id=>{
+const fakeDb = id =>{
     let shoppingCart;
 
+
+    //get the shopping cart from local storage
     const storedCart = localStorage.getItem('shopping-cart')
     if (storedCart){
         shoppingCart = JSON.parse(storedCart);
@@ -11,8 +13,6 @@ const fakeDb = id=>{
         shoppingCart = {};
     }
     
-
-
 
     const quantity = shoppingCart[id];
     if(quantity){
@@ -26,4 +26,19 @@ const fakeDb = id=>{
     localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart))
 }
 
-export {fakeDb};
+
+// removing data from database
+const removeFromDb = id =>{
+    const storedCart = localStorage.getItem('shopping-cart');
+    if(storedCart){
+        const shoppingCart = JSON.parse(storedCart)
+        if(id in shoppingCart){
+            delete shoppingCart[id];
+            localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart))
+
+        }
+
+    }
+ 
+}
+export {fakeDb,removeFromDb};

@@ -1,4 +1,4 @@
-import { fakeDb } from '../../utilities/fakeDb';
+import { fakeDb, removeFromDb } from '../../utilities/fakeDb';
 import './Student.css';
 
 const Student = (props) => {
@@ -7,6 +7,9 @@ const Student = (props) => {
     const addToCart = (id)=>{
         console.log('added item',id)
         fakeDb(id);
+    }
+    const removeCart = id =>{
+        removeFromDb(id);
     }
 
     return (
@@ -18,6 +21,7 @@ const Student = (props) => {
             <h3>Roll: {roll}</h3>
             <h3>Gender: {gender}</h3>
             <button onClick={()=> addToCart(id)}>Add to cart</button>
+            <button onClick={()=> removeCart(id)}>Remove cart</button>
             
             
         </div>
