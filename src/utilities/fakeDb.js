@@ -4,8 +4,8 @@ const fakeDb = id=>{
     const quantity = localStorage.getItem(id);
     if(quantity){
         console.log("Already exist")
-        const newQuantity = quantity + 1;
-        localStorage.setItem(newQuantity)
+        const newQuantity = parseInt(quantity) + 1;
+        localStorage.setItem(id, newQuantity)
     }
     else{
         localStorage.setItem(id, 1)
